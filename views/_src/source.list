@@ -1,0 +1,10 @@
+HEADERS += home_indexView.moc
+SOURCES += home_indexView.cpp
+HEADERS += partial_welcomeView.moc
+SOURCES += partial_welcomeView.cpp
+
+# include view files in the project
+views.files += ../home/index.erb
+views.files += ../partial/welcome.erb
+views.path = .dummy
+INSTALLS += views
