@@ -12,8 +12,10 @@ public:
 
 QString home_indexView::toString()
 {
-  responsebody.reserve(65);
-  responsebody += QVariant(renderPartial("welcome")).toString();
+  responsebody.reserve(183);
+  responsebody += QStringLiteral("<h1>this is from home page</h1>\n");
+  responsebody += QVariant(renderPartial("middle_section")).toString();
+  responsebody += QStringLiteral("\n");
 
   return responsebody;
 }

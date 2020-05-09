@@ -51,8 +51,32 @@ OBJECTS_DIR   = .obj/
 ####### Files
 
 SOURCES       = home_indexView.cpp \
+		layouts_applicationView.cpp \
+		partial_bannerView.cpp \
+		partial_banner_bottomView.cpp \
+		partial_copyrightView.cpp \
+		partial_footerView.cpp \
+		partial_loginView.cpp \
+		partial_middle_sectionView.cpp \
+		partial_pricingView.cpp \
+		partial_registerView.cpp \
+		partial_servicesView.cpp \
+		partial_statsView.cpp \
+		partial_testimonialsView.cpp \
 		partial_welcomeView.cpp 
 OBJECTS       = .obj/home_indexView.o \
+		.obj/layouts_applicationView.o \
+		.obj/partial_bannerView.o \
+		.obj/partial_banner_bottomView.o \
+		.obj/partial_copyrightView.o \
+		.obj/partial_footerView.o \
+		.obj/partial_loginView.o \
+		.obj/partial_middle_sectionView.o \
+		.obj/partial_pricingView.o \
+		.obj/partial_registerView.o \
+		.obj/partial_servicesView.o \
+		.obj/partial_statsView.o \
+		.obj/partial_testimonialsView.o \
 		.obj/partial_welcomeView.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -132,7 +156,31 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		_src.pro home_indexView.moc \
+		layouts_applicationView.moc \
+		partial_bannerView.moc \
+		partial_banner_bottomView.moc \
+		partial_copyrightView.moc \
+		partial_footerView.moc \
+		partial_loginView.moc \
+		partial_middle_sectionView.moc \
+		partial_pricingView.moc \
+		partial_registerView.moc \
+		partial_servicesView.moc \
+		partial_statsView.moc \
+		partial_testimonialsView.moc \
 		partial_welcomeView.moc home_indexView.cpp \
+		layouts_applicationView.cpp \
+		partial_bannerView.cpp \
+		partial_banner_bottomView.cpp \
+		partial_copyrightView.cpp \
+		partial_footerView.cpp \
+		partial_loginView.cpp \
+		partial_middle_sectionView.cpp \
+		partial_pricingView.cpp \
+		partial_registerView.cpp \
+		partial_servicesView.cpp \
+		partial_statsView.cpp \
+		partial_testimonialsView.cpp \
 		partial_welcomeView.cpp
 QMAKE_TARGET  = view
 DESTDIR       = ../../lib/
@@ -351,8 +399,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents home_indexView.moc partial_welcomeView.moc $(DISTDIR)/
-	$(COPY_FILE) --parents home_indexView.cpp partial_welcomeView.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents home_indexView.moc layouts_applicationView.moc partial_bannerView.moc partial_banner_bottomView.moc partial_copyrightView.moc partial_footerView.moc partial_loginView.moc partial_middle_sectionView.moc partial_pricingView.moc partial_registerView.moc partial_servicesView.moc partial_statsView.moc partial_testimonialsView.moc partial_welcomeView.moc $(DISTDIR)/
+	$(COPY_FILE) --parents home_indexView.cpp layouts_applicationView.cpp partial_bannerView.cpp partial_banner_bottomView.cpp partial_copyrightView.cpp partial_footerView.cpp partial_loginView.cpp partial_middle_sectionView.cpp partial_pricingView.cpp partial_registerView.cpp partial_servicesView.cpp partial_statsView.cpp partial_testimonialsView.cpp partial_welcomeView.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -390,14 +438,86 @@ compiler_moc_predefs_clean:
 
 compiler_moc_header_make_all:
 compiler_moc_header_clean:
-compiler_moc_source_make_all: .obj/home_indexView.moc .obj/partial_welcomeView.moc
+compiler_moc_source_make_all: .obj/home_indexView.moc .obj/layouts_applicationView.moc .obj/partial_bannerView.moc .obj/partial_banner_bottomView.moc .obj/partial_copyrightView.moc .obj/partial_footerView.moc .obj/partial_loginView.moc .obj/partial_middle_sectionView.moc .obj/partial_pricingView.moc .obj/partial_registerView.moc .obj/partial_servicesView.moc .obj/partial_statsView.moc .obj/partial_testimonialsView.moc .obj/partial_welcomeView.moc
 compiler_moc_source_clean:
-	-$(DEL_FILE) .obj/home_indexView.moc .obj/partial_welcomeView.moc
+	-$(DEL_FILE) .obj/home_indexView.moc .obj/layouts_applicationView.moc .obj/partial_bannerView.moc .obj/partial_banner_bottomView.moc .obj/partial_copyrightView.moc .obj/partial_footerView.moc .obj/partial_loginView.moc .obj/partial_middle_sectionView.moc .obj/partial_pricingView.moc .obj/partial_registerView.moc .obj/partial_servicesView.moc .obj/partial_statsView.moc .obj/partial_testimonialsView.moc .obj/partial_welcomeView.moc
 .obj/home_indexView.moc: ../../helpers/applicationhelper.h \
 		home_indexView.cpp \
 		.obj/moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include .obj//moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/ahlev/Projects/realestateapp/views/_src -I/home/ahlev/Projects/realestateapp/helpers -I/home/ahlev/Projects/realestateapp/models -I/usr/include/treefrog -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtQml -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include home_indexView.cpp -o .obj/home_indexView.moc
+
+.obj/layouts_applicationView.moc: ../../helpers/applicationhelper.h \
+		layouts_applicationView.cpp \
+		.obj/moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include .obj//moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/ahlev/Projects/realestateapp/views/_src -I/home/ahlev/Projects/realestateapp/helpers -I/home/ahlev/Projects/realestateapp/models -I/usr/include/treefrog -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtQml -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include layouts_applicationView.cpp -o .obj/layouts_applicationView.moc
+
+.obj/partial_bannerView.moc: ../../helpers/applicationhelper.h \
+		partial_bannerView.cpp \
+		.obj/moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include .obj//moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/ahlev/Projects/realestateapp/views/_src -I/home/ahlev/Projects/realestateapp/helpers -I/home/ahlev/Projects/realestateapp/models -I/usr/include/treefrog -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtQml -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include partial_bannerView.cpp -o .obj/partial_bannerView.moc
+
+.obj/partial_banner_bottomView.moc: ../../helpers/applicationhelper.h \
+		partial_banner_bottomView.cpp \
+		.obj/moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include .obj//moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/ahlev/Projects/realestateapp/views/_src -I/home/ahlev/Projects/realestateapp/helpers -I/home/ahlev/Projects/realestateapp/models -I/usr/include/treefrog -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtQml -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include partial_banner_bottomView.cpp -o .obj/partial_banner_bottomView.moc
+
+.obj/partial_copyrightView.moc: ../../helpers/applicationhelper.h \
+		partial_copyrightView.cpp \
+		.obj/moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include .obj//moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/ahlev/Projects/realestateapp/views/_src -I/home/ahlev/Projects/realestateapp/helpers -I/home/ahlev/Projects/realestateapp/models -I/usr/include/treefrog -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtQml -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include partial_copyrightView.cpp -o .obj/partial_copyrightView.moc
+
+.obj/partial_footerView.moc: ../../helpers/applicationhelper.h \
+		partial_footerView.cpp \
+		.obj/moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include .obj//moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/ahlev/Projects/realestateapp/views/_src -I/home/ahlev/Projects/realestateapp/helpers -I/home/ahlev/Projects/realestateapp/models -I/usr/include/treefrog -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtQml -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include partial_footerView.cpp -o .obj/partial_footerView.moc
+
+.obj/partial_loginView.moc: ../../helpers/applicationhelper.h \
+		partial_loginView.cpp \
+		.obj/moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include .obj//moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/ahlev/Projects/realestateapp/views/_src -I/home/ahlev/Projects/realestateapp/helpers -I/home/ahlev/Projects/realestateapp/models -I/usr/include/treefrog -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtQml -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include partial_loginView.cpp -o .obj/partial_loginView.moc
+
+.obj/partial_middle_sectionView.moc: ../../helpers/applicationhelper.h \
+		partial_middle_sectionView.cpp \
+		.obj/moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include .obj//moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/ahlev/Projects/realestateapp/views/_src -I/home/ahlev/Projects/realestateapp/helpers -I/home/ahlev/Projects/realestateapp/models -I/usr/include/treefrog -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtQml -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include partial_middle_sectionView.cpp -o .obj/partial_middle_sectionView.moc
+
+.obj/partial_pricingView.moc: ../../helpers/applicationhelper.h \
+		partial_pricingView.cpp \
+		.obj/moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include .obj//moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/ahlev/Projects/realestateapp/views/_src -I/home/ahlev/Projects/realestateapp/helpers -I/home/ahlev/Projects/realestateapp/models -I/usr/include/treefrog -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtQml -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include partial_pricingView.cpp -o .obj/partial_pricingView.moc
+
+.obj/partial_registerView.moc: ../../helpers/applicationhelper.h \
+		partial_registerView.cpp \
+		.obj/moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include .obj//moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/ahlev/Projects/realestateapp/views/_src -I/home/ahlev/Projects/realestateapp/helpers -I/home/ahlev/Projects/realestateapp/models -I/usr/include/treefrog -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtQml -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include partial_registerView.cpp -o .obj/partial_registerView.moc
+
+.obj/partial_servicesView.moc: ../../helpers/applicationhelper.h \
+		partial_servicesView.cpp \
+		.obj/moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include .obj//moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/ahlev/Projects/realestateapp/views/_src -I/home/ahlev/Projects/realestateapp/helpers -I/home/ahlev/Projects/realestateapp/models -I/usr/include/treefrog -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtQml -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include partial_servicesView.cpp -o .obj/partial_servicesView.moc
+
+.obj/partial_statsView.moc: ../../helpers/applicationhelper.h \
+		partial_statsView.cpp \
+		.obj/moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include .obj//moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/ahlev/Projects/realestateapp/views/_src -I/home/ahlev/Projects/realestateapp/helpers -I/home/ahlev/Projects/realestateapp/models -I/usr/include/treefrog -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtQml -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include partial_statsView.cpp -o .obj/partial_statsView.moc
+
+.obj/partial_testimonialsView.moc: ../../helpers/applicationhelper.h \
+		partial_testimonialsView.cpp \
+		.obj/moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include .obj//moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/ahlev/Projects/realestateapp/views/_src -I/home/ahlev/Projects/realestateapp/helpers -I/home/ahlev/Projects/realestateapp/models -I/usr/include/treefrog -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtQml -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include partial_testimonialsView.cpp -o .obj/partial_testimonialsView.moc
 
 .obj/partial_welcomeView.moc: ../../helpers/applicationhelper.h \
 		partial_welcomeView.cpp \
@@ -419,6 +539,54 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_source_clean
 		.obj/home_indexView.moc
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/home_indexView.o home_indexView.cpp
 
+.obj/layouts_applicationView.o: layouts_applicationView.cpp ../../helpers/applicationhelper.h \
+		.obj/layouts_applicationView.moc
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/layouts_applicationView.o layouts_applicationView.cpp
+
+.obj/partial_bannerView.o: partial_bannerView.cpp ../../helpers/applicationhelper.h \
+		.obj/partial_bannerView.moc
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/partial_bannerView.o partial_bannerView.cpp
+
+.obj/partial_banner_bottomView.o: partial_banner_bottomView.cpp ../../helpers/applicationhelper.h \
+		.obj/partial_banner_bottomView.moc
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/partial_banner_bottomView.o partial_banner_bottomView.cpp
+
+.obj/partial_copyrightView.o: partial_copyrightView.cpp ../../helpers/applicationhelper.h \
+		.obj/partial_copyrightView.moc
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/partial_copyrightView.o partial_copyrightView.cpp
+
+.obj/partial_footerView.o: partial_footerView.cpp ../../helpers/applicationhelper.h \
+		.obj/partial_footerView.moc
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/partial_footerView.o partial_footerView.cpp
+
+.obj/partial_loginView.o: partial_loginView.cpp ../../helpers/applicationhelper.h \
+		.obj/partial_loginView.moc
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/partial_loginView.o partial_loginView.cpp
+
+.obj/partial_middle_sectionView.o: partial_middle_sectionView.cpp ../../helpers/applicationhelper.h \
+		.obj/partial_middle_sectionView.moc
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/partial_middle_sectionView.o partial_middle_sectionView.cpp
+
+.obj/partial_pricingView.o: partial_pricingView.cpp ../../helpers/applicationhelper.h \
+		.obj/partial_pricingView.moc
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/partial_pricingView.o partial_pricingView.cpp
+
+.obj/partial_registerView.o: partial_registerView.cpp ../../helpers/applicationhelper.h \
+		.obj/partial_registerView.moc
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/partial_registerView.o partial_registerView.cpp
+
+.obj/partial_servicesView.o: partial_servicesView.cpp ../../helpers/applicationhelper.h \
+		.obj/partial_servicesView.moc
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/partial_servicesView.o partial_servicesView.cpp
+
+.obj/partial_statsView.o: partial_statsView.cpp ../../helpers/applicationhelper.h \
+		.obj/partial_statsView.moc
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/partial_statsView.o partial_statsView.cpp
+
+.obj/partial_testimonialsView.o: partial_testimonialsView.cpp ../../helpers/applicationhelper.h \
+		.obj/partial_testimonialsView.moc
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/partial_testimonialsView.o partial_testimonialsView.cpp
+
 .obj/partial_welcomeView.o: partial_welcomeView.cpp ../../helpers/applicationhelper.h \
 		.obj/partial_welcomeView.moc
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/partial_welcomeView.o partial_welcomeView.cpp
@@ -428,10 +596,34 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_source_clean
 install_views: first FORCE
 	@test -d $(INSTALL_ROOT)/home/ahlev/Projects/realestateapp/views/_src/.dummy || mkdir -p $(INSTALL_ROOT)/home/ahlev/Projects/realestateapp/views/_src/.dummy
 	-$(QINSTALL) /home/ahlev/Projects/realestateapp/views/home/index.erb $(INSTALL_ROOT)/home/ahlev/Projects/realestateapp/views/_src/.dummy/index.erb
+	-$(QINSTALL) /home/ahlev/Projects/realestateapp/views/layouts/application.erb $(INSTALL_ROOT)/home/ahlev/Projects/realestateapp/views/_src/.dummy/application.erb
+	-$(QINSTALL) /home/ahlev/Projects/realestateapp/views/partial/banner.erb $(INSTALL_ROOT)/home/ahlev/Projects/realestateapp/views/_src/.dummy/banner.erb
+	-$(QINSTALL) /home/ahlev/Projects/realestateapp/views/partial/banner_bottom.erb $(INSTALL_ROOT)/home/ahlev/Projects/realestateapp/views/_src/.dummy/banner_bottom.erb
+	-$(QINSTALL) /home/ahlev/Projects/realestateapp/views/partial/copyright.erb $(INSTALL_ROOT)/home/ahlev/Projects/realestateapp/views/_src/.dummy/copyright.erb
+	-$(QINSTALL) /home/ahlev/Projects/realestateapp/views/partial/footer.erb $(INSTALL_ROOT)/home/ahlev/Projects/realestateapp/views/_src/.dummy/footer.erb
+	-$(QINSTALL) /home/ahlev/Projects/realestateapp/views/partial/login.erb $(INSTALL_ROOT)/home/ahlev/Projects/realestateapp/views/_src/.dummy/login.erb
+	-$(QINSTALL) /home/ahlev/Projects/realestateapp/views/partial/middle_section.erb $(INSTALL_ROOT)/home/ahlev/Projects/realestateapp/views/_src/.dummy/middle_section.erb
+	-$(QINSTALL) /home/ahlev/Projects/realestateapp/views/partial/pricing.erb $(INSTALL_ROOT)/home/ahlev/Projects/realestateapp/views/_src/.dummy/pricing.erb
+	-$(QINSTALL) /home/ahlev/Projects/realestateapp/views/partial/register.erb $(INSTALL_ROOT)/home/ahlev/Projects/realestateapp/views/_src/.dummy/register.erb
+	-$(QINSTALL) /home/ahlev/Projects/realestateapp/views/partial/services.erb $(INSTALL_ROOT)/home/ahlev/Projects/realestateapp/views/_src/.dummy/services.erb
+	-$(QINSTALL) /home/ahlev/Projects/realestateapp/views/partial/stats.erb $(INSTALL_ROOT)/home/ahlev/Projects/realestateapp/views/_src/.dummy/stats.erb
+	-$(QINSTALL) /home/ahlev/Projects/realestateapp/views/partial/testimonials.erb $(INSTALL_ROOT)/home/ahlev/Projects/realestateapp/views/_src/.dummy/testimonials.erb
 	-$(QINSTALL) /home/ahlev/Projects/realestateapp/views/partial/welcome.erb $(INSTALL_ROOT)/home/ahlev/Projects/realestateapp/views/_src/.dummy/welcome.erb
 
 uninstall_views: FORCE
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/ahlev/Projects/realestateapp/views/_src/.dummy/welcome.erb
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/ahlev/Projects/realestateapp/views/_src/.dummy/testimonials.erb
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/ahlev/Projects/realestateapp/views/_src/.dummy/stats.erb
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/ahlev/Projects/realestateapp/views/_src/.dummy/services.erb
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/ahlev/Projects/realestateapp/views/_src/.dummy/register.erb
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/ahlev/Projects/realestateapp/views/_src/.dummy/pricing.erb
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/ahlev/Projects/realestateapp/views/_src/.dummy/middle_section.erb
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/ahlev/Projects/realestateapp/views/_src/.dummy/login.erb
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/ahlev/Projects/realestateapp/views/_src/.dummy/footer.erb
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/ahlev/Projects/realestateapp/views/_src/.dummy/copyright.erb
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/ahlev/Projects/realestateapp/views/_src/.dummy/banner_bottom.erb
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/ahlev/Projects/realestateapp/views/_src/.dummy/banner.erb
+	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/ahlev/Projects/realestateapp/views/_src/.dummy/application.erb
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/ahlev/Projects/realestateapp/views/_src/.dummy/index.erb
 	-$(DEL_DIR) $(INSTALL_ROOT)/home/ahlev/Projects/realestateapp/views/_src/.dummy/ 
 
