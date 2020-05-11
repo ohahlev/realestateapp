@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<%#include "contact.h" %>
+<% tfetch(QVariantMap, contact); %>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>New Contact</h1>
+
+<%== formTag(urla("create"), Tf::Post) %>
+  <p>
+    <label>Phone<br /><input name="contact[phone]" value="<%= contact["phone"] %>" /></label>
+  </p>
+  <p>
+    <label>Email<br /><input name="contact[email]" value="<%= contact["email"] %>" /></label>
+  </p>
+  <p>
+    <label>Location<br /><input name="contact[location]" value="<%= contact["location"] %>" /></label>
+  </p>
+  <p>
+    <label>Latitude<br /><input name="contact[latitude]" value="<%= contact["latitude"] %>" /></label>
+  </p>
+  <p>
+    <label>Longitude<br /><input name="contact[longitude]" value="<%= contact["longitude"] %>" /></label>
+  </p>
+  <p>
+    <input type="submit" value="Create" />
+  </p>
+</form>
+
+<%== linkTo("Back", urla("index")) %>
+
+</body>
+</html>

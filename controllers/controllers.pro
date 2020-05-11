@@ -17,3 +17,5 @@ HEADERS += applicationcontroller.h
 SOURCES += applicationcontroller.cpp
 HEADERS += homecontroller.h
 SOURCES += homecontroller.cpp
+HEADERS += contactcontroller.h
+SOURCES += contactcontroller.cpp

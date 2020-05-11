@@ -51,12 +51,16 @@ OBJECTS_DIR   = .obj/
 ####### Files
 
 SOURCES       = applicationcontroller.cpp \
-		homecontroller.cpp .obj/moc_applicationcontroller.cpp \
-		.obj/moc_homecontroller.cpp
+		homecontroller.cpp \
+		contactcontroller.cpp .obj/moc_applicationcontroller.cpp \
+		.obj/moc_homecontroller.cpp \
+		.obj/moc_contactcontroller.cpp
 OBJECTS       = .obj/applicationcontroller.o \
 		.obj/homecontroller.o \
+		.obj/contactcontroller.o \
 		.obj/moc_applicationcontroller.o \
-		.obj/moc_homecontroller.o
+		.obj/moc_homecontroller.o \
+		.obj/moc_contactcontroller.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -134,8 +138,10 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		controllers.pro applicationcontroller.h \
-		homecontroller.h applicationcontroller.cpp \
-		homecontroller.cpp
+		homecontroller.h \
+		contactcontroller.h applicationcontroller.cpp \
+		homecontroller.cpp \
+		contactcontroller.cpp
 QMAKE_TARGET  = controller
 DESTDIR       = ../lib/
 TARGET        = libcontroller.so.1.0.0
@@ -353,8 +359,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents applicationcontroller.h homecontroller.h $(DISTDIR)/
-	$(COPY_FILE) --parents applicationcontroller.cpp homecontroller.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents applicationcontroller.h homecontroller.h contactcontroller.h $(DISTDIR)/
+	$(COPY_FILE) --parents applicationcontroller.cpp homecontroller.cpp contactcontroller.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -386,9 +392,9 @@ compiler_moc_predefs_clean:
 .obj/moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++1y -Wall -W -dM -E -o .obj/moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: .obj/moc_applicationcontroller.cpp .obj/moc_homecontroller.cpp
+compiler_moc_header_make_all: .obj/moc_applicationcontroller.cpp .obj/moc_homecontroller.cpp .obj/moc_contactcontroller.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) .obj/moc_applicationcontroller.cpp .obj/moc_homecontroller.cpp
+	-$(DEL_FILE) .obj/moc_applicationcontroller.cpp .obj/moc_homecontroller.cpp .obj/moc_contactcontroller.cpp
 .obj/moc_applicationcontroller.cpp: ../helpers/applicationhelper.h \
 		applicationcontroller.h \
 		.obj/moc_predefs.h \
@@ -401,6 +407,13 @@ compiler_moc_header_clean:
 		.obj/moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include .obj//moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/ahlev/Projects/realestateapp/controllers -I/home/ahlev/Projects/realestateapp/helpers -I/home/ahlev/Projects/realestateapp/models -I/usr/include/treefrog -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtQml -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include homecontroller.h -o .obj/moc_homecontroller.cpp
+
+.obj/moc_contactcontroller.cpp: applicationcontroller.h \
+		../helpers/applicationhelper.h \
+		contactcontroller.h \
+		.obj/moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include .obj//moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/ahlev/Projects/realestateapp/controllers -I/home/ahlev/Projects/realestateapp/helpers -I/home/ahlev/Projects/realestateapp/models -I/usr/include/treefrog -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtQml -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include contactcontroller.h -o .obj/moc_contactcontroller.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -423,11 +436,20 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean
 		../helpers/applicationhelper.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/homecontroller.o homecontroller.cpp
 
+.obj/contactcontroller.o: contactcontroller.cpp contactcontroller.h \
+		applicationcontroller.h \
+		../helpers/applicationhelper.h \
+		../models/contact.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/contactcontroller.o contactcontroller.cpp
+
 .obj/moc_applicationcontroller.o: .obj/moc_applicationcontroller.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/moc_applicationcontroller.o .obj/moc_applicationcontroller.cpp
 
 .obj/moc_homecontroller.o: .obj/moc_homecontroller.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/moc_homecontroller.o .obj/moc_homecontroller.cpp
+
+.obj/moc_contactcontroller.o: .obj/moc_contactcontroller.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/moc_contactcontroller.o .obj/moc_contactcontroller.cpp
 
 ####### Install
 

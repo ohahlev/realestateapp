@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<%#include "contact.h" %>
+<% tfetch(QVariantMap, contact); %>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>Editing Contact</h1>
+
+<%== formTag(urla("save", contact["id"]), Tf::Post) %>
+  <p>
+    <label>ID<br /><input type="text" name="contact[id]" value="<%= contact["id"] %>" readonly="readonly" /></label>
+  </p>
+  <p>
+    <label>Phone<br /><input type="text" name="contact[phone]" value="<%= contact["phone"] %>" /></label>
+  </p>
+  <p>
+    <label>Email<br /><input type="text" name="contact[email]" value="<%= contact["email"] %>" /></label>
+  </p>
+  <p>
+    <label>Location<br /><input type="text" name="contact[location]" value="<%= contact["location"] %>" /></label>
+  </p>
+  <p>
+    <label>Latitude<br /><input type="text" name="contact[latitude]" value="<%= contact["latitude"] %>" /></label>
+  </p>
+  <p>
+    <label>Longitude<br /><input type="text" name="contact[longitude]" value="<%= contact["longitude"] %>" /></label>
+  </p>
+  <p>
+    <input type="submit" value="Save" />
+  </p>
+</form>
+
+<%== linkTo("Show", urla("show", contact["id"])) %> |
+<%== linkTo("Back", urla("index")) %>
+</body>
+</html>

@@ -50,8 +50,9 @@ OBJECTS_DIR   = .obj/
 
 ####### Files
 
-SOURCES       =  
-OBJECTS       = 
+SOURCES       = contact.cpp .obj/moc_contactobject.cpp
+OBJECTS       = .obj/contact.o \
+		.obj/moc_contactobject.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -128,7 +129,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		models.pro  
+		models.pro sqlobjects/contactobject.h \
+		contact.h contact.cpp
 QMAKE_TARGET  = model
 DESTDIR       = ../lib/
 TARGET        = libmodel.so.1.0.0
@@ -344,9 +346,12 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents sqlobjects/contactobject.h contact.h $(DISTDIR)/
+	$(COPY_FILE) --parents contact.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
+	-$(DEL_FILE) $(OBJECTS)
 	-$(DEL_FILE) *~ core *.core
 
 
@@ -374,8 +379,14 @@ compiler_moc_predefs_clean:
 .obj/moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++1y -Wall -W -dM -E -o .obj/moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all:
+compiler_moc_header_make_all: .obj/moc_contactobject.cpp
 compiler_moc_header_clean:
+	-$(DEL_FILE) .obj/moc_contactobject.cpp
+.obj/moc_contactobject.cpp: sqlobjects/contactobject.h \
+		.obj/moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include .obj//moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/ahlev/Projects/realestateapp/models -I/home/ahlev/Projects/realestateapp/helpers -I/usr/include/treefrog -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtQml -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include sqlobjects/contactobject.h -o .obj/moc_contactobject.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
 compiler_yacc_decl_make_all:
@@ -384,9 +395,16 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean 
+compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean 
 
 ####### Compile
+
+.obj/contact.o: contact.cpp contact.h \
+		sqlobjects/contactobject.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/contact.o contact.cpp
+
+.obj/moc_contactobject.o: .obj/moc_contactobject.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/moc_contactobject.o .obj/moc_contactobject.cpp
 
 ####### Install
 

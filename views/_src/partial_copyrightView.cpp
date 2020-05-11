@@ -12,8 +12,8 @@ public:
 
 QString partial_copyrightView::toString()
 {
-  responsebody.reserve(212);
-  responsebody += tr("<div class=\"copy_right py-4 text-center\">\n<p class=\"text-white\">© 2018 District. All rights reserved | Design by\n    <a href=\"http://w3layouts.com/\">W3layouts</a>\n</p>\n</div>\n");
+  responsebody.reserve(216);
+  responsebody += tr("<div class=\"copy_right py-4 text-center\">\n  <p class=\"text-white\">© 2018 District. All rights reserved | Design by\n    <a href=\"http://w3layouts.com/\">W3layouts</a>\n  </p>\n</div>\n");
 
   return responsebody;
 }

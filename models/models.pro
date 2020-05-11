@@ -12,3 +12,6 @@ MOC_DIR = .obj/
 OBJECTS_DIR = .obj/
 
 include(../appbase.pri)
+HEADERS += sqlobjects/contactobject.h
+HEADERS += contact.h
+SOURCES += contact.cpp

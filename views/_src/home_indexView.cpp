@@ -12,10 +12,16 @@ public:
 
 QString home_indexView::toString()
 {
-  responsebody.reserve(183);
-  responsebody += QStringLiteral("<h1>this is from home page</h1>\n");
-  responsebody += QVariant(renderPartial("middle_section")).toString();
+  responsebody.reserve(490);
+  responsebody += QVariant(renderPartial("featured")).toString();
   responsebody += QStringLiteral("\n");
+  responsebody += QVariant(renderPartial("services")).toString();
+  responsebody += QStringLiteral("\n");
+  responsebody += QVariant(renderPartial("pricing")).toString();
+  responsebody += QStringLiteral("\n");
+  responsebody += QVariant(renderPartial("stats")).toString();
+  responsebody += QStringLiteral("\n");
+  responsebody += QVariant(renderPartial("testimonials")).toString();
 
   return responsebody;
 }
