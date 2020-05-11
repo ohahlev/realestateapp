@@ -1,3 +1,11 @@
+HEADERS += banner_createView.moc
+SOURCES += banner_createView.cpp
+HEADERS += banner_indexView.moc
+SOURCES += banner_indexView.cpp
+HEADERS += banner_saveView.moc
+SOURCES += banner_saveView.cpp
+HEADERS += banner_showView.moc
+SOURCES += banner_showView.cpp
 HEADERS += contact_createView.moc
 SOURCES += contact_createView.cpp
 HEADERS += contact_indexView.moc
@@ -42,6 +50,10 @@ HEADERS += partial_welcomeView.moc
 SOURCES += partial_welcomeView.cpp
 
 # include view files in the project
+views.files += ../banner/create.erb
+views.files += ../banner/index.erb
+views.files += ../banner/save.erb
+views.files += ../banner/show.erb
 views.files += ../contact/create.erb
 views.files += ../contact/index.erb
 views.files += ../contact/save.erb

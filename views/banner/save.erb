@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<%#include "banner.h" %>
+<% tfetch(QVariantMap, banner); %>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>Editing Banner</h1>
+
+<%== formTag(urla("save", banner["id"]), Tf::Post) %>
+  <p>
+    <label>ID<br /><input type="text" name="banner[id]" value="<%= banner["id"] %>" readonly="readonly" /></label>
+  </p>
+  <p>
+    <label>Text<br /><input type="text" name="banner[text]" value="<%= banner["text"] %>" /></label>
+  </p>
+  <p>
+    <input type="submit" value="Save" />
+  </p>
+</form>
+
+<%== linkTo("Show", urla("show", banner["id"])) %> |
+<%== linkTo("Back", urla("index")) %>
+</body>
+</html>

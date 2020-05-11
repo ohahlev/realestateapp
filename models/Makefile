@@ -50,9 +50,13 @@ OBJECTS_DIR   = .obj/
 
 ####### Files
 
-SOURCES       = contact.cpp .obj/moc_contactobject.cpp
+SOURCES       = contact.cpp \
+		banner.cpp .obj/moc_contactobject.cpp \
+		.obj/moc_bannerobject.cpp
 OBJECTS       = .obj/contact.o \
-		.obj/moc_contactobject.o
+		.obj/banner.o \
+		.obj/moc_contactobject.o \
+		.obj/moc_bannerobject.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -130,7 +134,10 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		models.pro sqlobjects/contactobject.h \
-		contact.h contact.cpp
+		contact.h \
+		sqlobjects/bannerobject.h \
+		banner.h contact.cpp \
+		banner.cpp
 QMAKE_TARGET  = model
 DESTDIR       = ../lib/
 TARGET        = libmodel.so.1.0.0
@@ -346,8 +353,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents sqlobjects/contactobject.h contact.h $(DISTDIR)/
-	$(COPY_FILE) --parents contact.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents sqlobjects/contactobject.h contact.h sqlobjects/bannerobject.h banner.h $(DISTDIR)/
+	$(COPY_FILE) --parents contact.cpp banner.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -379,13 +386,18 @@ compiler_moc_predefs_clean:
 .obj/moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++1y -Wall -W -dM -E -o .obj/moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: .obj/moc_contactobject.cpp
+compiler_moc_header_make_all: .obj/moc_contactobject.cpp .obj/moc_bannerobject.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) .obj/moc_contactobject.cpp
+	-$(DEL_FILE) .obj/moc_contactobject.cpp .obj/moc_bannerobject.cpp
 .obj/moc_contactobject.cpp: sqlobjects/contactobject.h \
 		.obj/moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include .obj//moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/ahlev/Projects/realestateapp/models -I/home/ahlev/Projects/realestateapp/helpers -I/usr/include/treefrog -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtQml -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include sqlobjects/contactobject.h -o .obj/moc_contactobject.cpp
+
+.obj/moc_bannerobject.cpp: sqlobjects/bannerobject.h \
+		.obj/moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include .obj//moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/ahlev/Projects/realestateapp/models -I/home/ahlev/Projects/realestateapp/helpers -I/usr/include/treefrog -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtQml -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include sqlobjects/bannerobject.h -o .obj/moc_bannerobject.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -403,8 +415,15 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean
 		sqlobjects/contactobject.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/contact.o contact.cpp
 
+.obj/banner.o: banner.cpp banner.h \
+		sqlobjects/bannerobject.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/banner.o banner.cpp
+
 .obj/moc_contactobject.o: .obj/moc_contactobject.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/moc_contactobject.o .obj/moc_contactobject.cpp
+
+.obj/moc_bannerobject.o: .obj/moc_bannerobject.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/moc_bannerobject.o .obj/moc_bannerobject.cpp
 
 ####### Install
 

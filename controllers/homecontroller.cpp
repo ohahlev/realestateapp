@@ -1,20 +1,21 @@
 #include "homecontroller.h"
 #include "contact.h"
+#include "banner.h"
 
 void HomeController::index()
 {   
-    // get all contacts
-    QList<Contact> contactList = Contact::getAll();
-    
-    // check if no contact found in database
-    if(contactList.length() == 0) {
+    // get banner list from database
+    QList<Banner> bannerList = Banner::getAll();
+
+    // check if there is no banner information
+    if(bannerList.length() == 0) {
         renderErrorResponse(Tf::NotFound);
         return;
     }
-    
-    // pass contact to view
-    Contact contact = contactList.at(0);
-    texport(contact);
+
+    // pass banner to view
+    Banner banner = bannerList.at(0);
+    texport(banner);
     render();
 }
 

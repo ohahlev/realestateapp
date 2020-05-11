@@ -1,24 +1,22 @@
-#include "contactcontroller.h"
-#include "contact.h"
+#include "bannercontroller.h"
+#include "banner.h"
 
-void ContactController::index()
+
+void BannerController::index()
 {
-    /*
-    auto contactList = Contact::getAll();
-    texport(contactList);
-    render();
-    */
+    auto bannerList = Banner::getAll();
+    texport(bannerList);
     render();
 }
 
-void ContactController::show(const QString &id)
+void BannerController::show(const QString &id)
 {
-    auto contact = Contact::get(id.toInt());
-    texport(contact);
+    auto banner = Banner::get(id.toInt());
+    texport(banner);
     render();
 }
 
-void ContactController::create()
+void BannerController::create()
 {
     switch (httpRequest().method()) {
     case Tf::Get:
@@ -26,8 +24,8 @@ void ContactController::create()
         break;
 
     case Tf::Post: {
-        auto contact = httpRequest().formItems("contact");
-        auto model = Contact::create(contact);
+        auto banner = httpRequest().formItems("banner");
+        auto model = Banner::create(banner);
 
         if (!model.isNull()) {
             QString notice = "Created successfully.";
@@ -36,7 +34,7 @@ void ContactController::create()
         } else {
             QString error = "Failed to create.";
             texport(error);
-            texport(contact);
+            texport(banner);
             render();
         }
         break; }
@@ -47,21 +45,21 @@ void ContactController::create()
     }
 }
 
-void ContactController::save(const QString &id)
+void BannerController::save(const QString &id)
 {
     switch (httpRequest().method()) {
     case Tf::Get: {
-        auto model = Contact::get(id.toInt());
+        auto model = Banner::get(id.toInt());
         if (!model.isNull()) {
-            auto contact = model.toVariantMap();
-            texport(contact);
+            auto banner = model.toVariantMap();
+            texport(banner);
             render();
         }
         break; }
 
     case Tf::Post: {
         QString error;
-        auto model = Contact::get(id.toInt());
+        auto model = Banner::get(id.toInt());
         
         if (model.isNull()) {
             error = "Original data not found. It may have been updated/removed by another transaction.";
@@ -70,8 +68,8 @@ void ContactController::save(const QString &id)
             break;
         }
 
-        auto contact = httpRequest().formItems("contact");
-        model.setProperties(contact);
+        auto banner = httpRequest().formItems("banner");
+        model.setProperties(banner);
         if (model.save()) {
             QString notice = "Updated successfully.";
             tflash(notice);
@@ -79,7 +77,7 @@ void ContactController::save(const QString &id)
         } else {
             error = "Failed to update.";
             texport(error);
-            texport(contact);
+            texport(banner);
             render();
         }
         break; }
@@ -90,18 +88,18 @@ void ContactController::save(const QString &id)
     }
 }
 
-void ContactController::remove(const QString &id)
+void BannerController::remove(const QString &id)
 {
     if (httpRequest().method() != Tf::Post) {
         renderErrorResponse(Tf::NotFound);
         return;
     }
 
-    auto contact = Contact::get(id.toInt());
-    contact.remove();
+    auto banner = Banner::get(id.toInt());
+    banner.remove();
     redirect(urla("index"));
 }
 
 
 // Don't remove below this line
-T_DEFINE_CONTROLLER(ContactController)
+T_DEFINE_CONTROLLER(BannerController)

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<%#include "banner.h" %>
+<% tfetch(Banner, banner); %>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>Showing Banner</h1>
+<dt>ID</dt><dd><%= banner.id() %></dd><br />
+<dt>Text</dt><dd><%= banner.text() %></dd><br />
+
+<%== linkTo("Edit", urla("save", banner.id())) %> |
+<%== linkTo("Back", urla("index")) %>
+
+</body>
+</html>

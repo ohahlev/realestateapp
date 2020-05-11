@@ -1,11 +1,10 @@
+<%#include "banner.h"%>
+<% tfetch(Banner, banner) %>
+
 <div class="banner-text-agile">
   <div class="container">
     <div class="banner-w3lstexts text-white text-center">
-      <h1>Perfect Property</h1>
-      <h4 class="text-uppercase mt-md-3 mt-2 mb-md-4 mb-3">for your home</h4>
-      <p class="text-white">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-        ullamco laboris</p>
-      <a href="about.html" class="banner-button btn mt-md-5 mt-4">Know More</a>
+      <%== banner.text() %>
     </div>
   </div>
 </div>

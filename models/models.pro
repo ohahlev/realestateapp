@@ -15,3 +15,6 @@ include(../appbase.pri)
 HEADERS += sqlobjects/contactobject.h
 HEADERS += contact.h
 SOURCES += contact.cpp
+HEADERS += sqlobjects/bannerobject.h
+HEADERS += banner.h
+SOURCES += banner.cpp
