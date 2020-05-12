@@ -26,8 +26,8 @@ QString banner_saveView::toString()
   responsebody += QVariant(formTag(urla("save", banner["id"]), Tf::Post)).toString();
   responsebody += QStringLiteral("\n  <p>\n    <label>ID<br /><input type=\"text\" name=\"banner[id]\" value=\"");
   responsebody += THttpUtility::htmlEscape(banner["id"]);
-  responsebody += QStringLiteral("\" readonly=\"readonly\" /></label>\n  </p>\n  <p>\n    <label>Text<br /><input type=\"text\" name=\"banner[text]\" value=\"");
-  responsebody += THttpUtility::htmlEscape(banner["text"]);
+  responsebody += QStringLiteral("\" readonly=\"readonly\" /></label>\n  </p>\n  <p>\n    <label>Html<br /><input type=\"text\" name=\"banner[html]\" value=\"");
+  responsebody += THttpUtility::htmlEscape(banner["html"]);
   responsebody += QStringLiteral("\" /></label>\n  </p>\n  <p>\n    <input type=\"submit\" value=\"Save\" />\n  </p>\n</form>\n\n");
   responsebody += QVariant(linkTo("Show", urla("show", banner["id"]))).toString();
   responsebody += QStringLiteral(" |\n");

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<%#include "banner.h" %>
-<% tfetch(QVariantMap, banner); %>
+<%#include "featured.h" %>
+<% tfetch(QVariantMap, featured); %>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -10,11 +10,14 @@
 <p style="color: red"><%=$ error %></p>
 <p style="color: green"><%=$ notice %></p>
 
-<h1>New Banner</h1>
+<h1>New Featured</h1>
 
 <%== formTag(urla("create"), Tf::Post) %>
   <p>
-    <label>Html<br /><input name="banner[html]" value="<%= banner["html"] %>" /></label>
+    <label>Image<br /><input name="featured[image]" value="<%= featured["image"] %>" /></label>
+  </p>
+  <p>
+    <label>Html<br /><input name="featured[html]" value="<%= featured["html"] %>" /></label>
   </p>
   <p>
     <input type="submit" value="Create" />

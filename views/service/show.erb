@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<%#include "service.h" %>
+<% tfetch(Service, service); %>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>Showing Service</h1>
+<dt>ID</dt><dd><%= service.id() %></dd><br />
+<dt>Icon</dt><dd><%= service.icon() %></dd><br />
+<dt>Name</dt><dd><%= service.name() %></dd><br />
+<dt>Subline</dt><dd><%= service.subline() %></dd><br />
+
+<%== linkTo("Edit", urla("save", service.id())) %> |
+<%== linkTo("Back", urla("index")) %>
+
+</body>
+</html>

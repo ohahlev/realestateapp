@@ -16,5 +16,12 @@ HEADERS += sqlobjects/contactobject.h
 HEADERS += contact.h
 SOURCES += contact.cpp
 HEADERS += sqlobjects/bannerobject.h
+
 HEADERS += banner.h
 SOURCES += banner.cpp
+HEADERS += sqlobjects/featuredobject.h
+HEADERS += featured.h
+SOURCES += featured.cpp
+HEADERS += sqlobjects/serviceobject.h
+HEADERS += service.h
+SOURCES += service.cpp

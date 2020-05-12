@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<%#include "banner.h" %>
+<%#include "service.h" %>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -7,20 +7,24 @@
 </head>
 <body>
 
-<h1>Listing Banner</h1>
+<h1>Listing Service</h1>
 
-<%== linkTo("Create a new Banner", urla("create")) %><br />
+<%== linkTo("Create a new Service", urla("create")) %><br />
 <br />
 <table border="1" cellpadding="5" style="border: 1px #d0d0d0 solid; border-collapse: collapse;">
   <tr>
     <th>ID</th>
-    <th>Html</th>
+    <th>Icon</th>
+    <th>Name</th>
+    <th>Subline</th>
   </tr>
-<% tfetch(QList<Banner>, bannerList); %>
-<% for (const auto &i : bannerList) { %>
+<% tfetch(QList<Service>, serviceList); %>
+<% for (const auto &i : serviceList) { %>
   <tr>
     <td><%= i.id() %></td>
-    <td><%= i.html() %></td>
+    <td><%= i.icon() %></td>
+    <td><%= i.name() %></td>
+    <td><%= i.subline() %></td>
     <td>
       <%== linkTo("Show", urla("show", i.id())) %>
       <%== linkTo("Edit", urla("save", i.id())) %>

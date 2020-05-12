@@ -30,14 +30,14 @@ int Banner::id() const
     return d->id;
 }
 
-QString Banner::text() const
+QString Banner::html() const
 {
-    return d->text;
+    return d->html;
 }
 
-void Banner::setText(const QString &text)
+void Banner::setHtml(const QString &html)
 {
-    d->text = text;
+    d->html = html;
 }
 
 Banner &Banner::operator=(const Banner &other)
@@ -46,10 +46,10 @@ Banner &Banner::operator=(const Banner &other)
     return *this;
 }
 
-Banner Banner::create(const QString &text)
+Banner Banner::create(const QString &html)
 {
     BannerObject obj;
-    obj.text = text;
+    obj.html = html;
     if (!obj.create()) {
         return Banner();
     }

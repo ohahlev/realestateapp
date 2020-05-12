@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<%#include "banner.h" %>
-<% tfetch(Banner, banner); %>
+<%#include "featured.h" %>
+<% tfetch(Featured, featured); %>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -10,11 +10,12 @@
 <p style="color: red"><%=$ error %></p>
 <p style="color: green"><%=$ notice %></p>
 
-<h1>Showing Banner</h1>
-<dt>ID</dt><dd><%= banner.id() %></dd><br />
-<dt>Html</dt><dd><%= banner.html() %></dd><br />
+<h1>Showing Featured</h1>
+<dt>ID</dt><dd><%= featured.id() %></dd><br />
+<dt>Image</dt><dd><%= featured.image() %></dd><br />
+<dt>Html</dt><dd><%= featured.html() %></dd><br />
 
-<%== linkTo("Edit", urla("save", banner.id())) %> |
+<%== linkTo("Edit", urla("save", featured.id())) %> |
 <%== linkTo("Back", urla("index")) %>
 
 </body>

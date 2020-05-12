@@ -365,7 +365,7 @@ h3.title-w3ls {
 /* middle section */
 
 .middle-w3l {
-    background: url(../images/bg.jpg) no-repeat right;
+    /*background: url(../images/bg.jpg) no-repeat right;*/
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;

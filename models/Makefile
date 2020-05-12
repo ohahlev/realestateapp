@@ -51,12 +51,20 @@ OBJECTS_DIR   = .obj/
 ####### Files
 
 SOURCES       = contact.cpp \
-		banner.cpp .obj/moc_contactobject.cpp \
-		.obj/moc_bannerobject.cpp
+		banner.cpp \
+		featured.cpp \
+		service.cpp .obj/moc_contactobject.cpp \
+		.obj/moc_bannerobject.cpp \
+		.obj/moc_featuredobject.cpp \
+		.obj/moc_serviceobject.cpp
 OBJECTS       = .obj/contact.o \
 		.obj/banner.o \
+		.obj/featured.o \
+		.obj/service.o \
 		.obj/moc_contactobject.o \
-		.obj/moc_bannerobject.o
+		.obj/moc_bannerobject.o \
+		.obj/moc_featuredobject.o \
+		.obj/moc_serviceobject.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -136,8 +144,14 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		models.pro sqlobjects/contactobject.h \
 		contact.h \
 		sqlobjects/bannerobject.h \
-		banner.h contact.cpp \
-		banner.cpp
+		banner.h \
+		sqlobjects/featuredobject.h \
+		featured.h \
+		sqlobjects/serviceobject.h \
+		service.h contact.cpp \
+		banner.cpp \
+		featured.cpp \
+		service.cpp
 QMAKE_TARGET  = model
 DESTDIR       = ../lib/
 TARGET        = libmodel.so.1.0.0
@@ -353,8 +367,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents sqlobjects/contactobject.h contact.h sqlobjects/bannerobject.h banner.h $(DISTDIR)/
-	$(COPY_FILE) --parents contact.cpp banner.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents sqlobjects/contactobject.h contact.h sqlobjects/bannerobject.h banner.h sqlobjects/featuredobject.h featured.h sqlobjects/serviceobject.h service.h $(DISTDIR)/
+	$(COPY_FILE) --parents contact.cpp banner.cpp featured.cpp service.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -386,9 +400,9 @@ compiler_moc_predefs_clean:
 .obj/moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++1y -Wall -W -dM -E -o .obj/moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: .obj/moc_contactobject.cpp .obj/moc_bannerobject.cpp
+compiler_moc_header_make_all: .obj/moc_contactobject.cpp .obj/moc_bannerobject.cpp .obj/moc_featuredobject.cpp .obj/moc_serviceobject.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) .obj/moc_contactobject.cpp .obj/moc_bannerobject.cpp
+	-$(DEL_FILE) .obj/moc_contactobject.cpp .obj/moc_bannerobject.cpp .obj/moc_featuredobject.cpp .obj/moc_serviceobject.cpp
 .obj/moc_contactobject.cpp: sqlobjects/contactobject.h \
 		.obj/moc_predefs.h \
 		/usr/lib/qt5/bin/moc
@@ -398,6 +412,16 @@ compiler_moc_header_clean:
 		.obj/moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include .obj//moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/ahlev/Projects/realestateapp/models -I/home/ahlev/Projects/realestateapp/helpers -I/usr/include/treefrog -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtQml -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include sqlobjects/bannerobject.h -o .obj/moc_bannerobject.cpp
+
+.obj/moc_featuredobject.cpp: sqlobjects/featuredobject.h \
+		.obj/moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include .obj//moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/ahlev/Projects/realestateapp/models -I/home/ahlev/Projects/realestateapp/helpers -I/usr/include/treefrog -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtQml -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include sqlobjects/featuredobject.h -o .obj/moc_featuredobject.cpp
+
+.obj/moc_serviceobject.cpp: sqlobjects/serviceobject.h \
+		.obj/moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include .obj//moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/ahlev/Projects/realestateapp/models -I/home/ahlev/Projects/realestateapp/helpers -I/usr/include/treefrog -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtQml -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include sqlobjects/serviceobject.h -o .obj/moc_serviceobject.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -419,11 +443,25 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean
 		sqlobjects/bannerobject.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/banner.o banner.cpp
 
+.obj/featured.o: featured.cpp featured.h \
+		sqlobjects/featuredobject.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/featured.o featured.cpp
+
+.obj/service.o: service.cpp service.h \
+		sqlobjects/serviceobject.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/service.o service.cpp
+
 .obj/moc_contactobject.o: .obj/moc_contactobject.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/moc_contactobject.o .obj/moc_contactobject.cpp
 
 .obj/moc_bannerobject.o: .obj/moc_bannerobject.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/moc_bannerobject.o .obj/moc_bannerobject.cpp
+
+.obj/moc_featuredobject.o: .obj/moc_featuredobject.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/moc_featuredobject.o .obj/moc_featuredobject.cpp
+
+.obj/moc_serviceobject.o: .obj/moc_serviceobject.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o .obj/moc_serviceobject.o .obj/moc_serviceobject.cpp
 
 ####### Install
 

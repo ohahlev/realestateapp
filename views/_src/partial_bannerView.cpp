@@ -13,10 +13,10 @@ public:
 
 QString partial_bannerView::toString()
 {
-  responsebody.reserve(323);
+  responsebody.reserve(321);
     tfetch(Banner, banner);
-  responsebody += QStringLiteral("\n<div class=\"banner-text-agile\">\n  <div class=\"container\">\n    <div class=\"banner-w3lstexts text-white text-center\">\n      ");
-  responsebody += QVariant(banner.text()).toString();
+  responsebody += QStringLiteral("<div class=\"banner-text-agile\">\n  <div class=\"container\">\n    <div class=\"banner-w3lstexts text-white text-center\">\n      ");
+  responsebody += QVariant(banner.html()).toString();
   responsebody += QStringLiteral("\n    </div>\n  </div>\n</div>\n");
 
   return responsebody;

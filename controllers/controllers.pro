@@ -19,5 +19,10 @@ HEADERS += homecontroller.h
 SOURCES += homecontroller.cpp
 HEADERS += contactcontroller.h
 SOURCES += contactcontroller.cpp
+
 HEADERS += bannercontroller.h
 SOURCES += bannercontroller.cpp
+HEADERS += featuredcontroller.h
+SOURCES += featuredcontroller.cpp
+HEADERS += servicecontroller.h
+SOURCES += servicecontroller.cpp

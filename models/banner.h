@@ -22,8 +22,8 @@ public:
     ~Banner();
 
     int id() const;
-    QString text() const;
-    void setText(const QString &text);
+    QString html() const;
+    void setHtml(const QString &html);
     Banner &operator=(const Banner &other);
 
     bool create() override { return TAbstractModel::create(); }
@@ -31,7 +31,7 @@ public:
     bool save()   override { return TAbstractModel::save(); }
     bool remove() override { return TAbstractModel::remove(); }
 
-    static Banner create(const QString &text);
+    static Banner create(const QString &html);
     static Banner create(const QVariantMap &values);
     static Banner get(int id);
     static int count();
