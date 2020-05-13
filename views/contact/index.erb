@@ -19,6 +19,8 @@
     <th>Location</th>
     <th>Latitude</th>
     <th>Longitude</th>
+    <th>Facebook</th>
+    <th>Youtube</th>
   </tr>
 <% tfetch(QList<Contact>, contactList); %>
 <% for (const auto &i : contactList) { %>
@@ -29,6 +31,8 @@
     <td><%= i.location() %></td>
     <td><%= i.latitude() %></td>
     <td><%= i.longitude() %></td>
+    <td><%= i.facebook() %></td>
+    <td><%= i.youtube() %></td>
     <td>
       <%== linkTo("Show", urla("show", i.id())) %>
       <%== linkTo("Edit", urla("save", i.id())) %>

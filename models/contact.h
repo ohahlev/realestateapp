@@ -32,6 +32,10 @@ public:
     void setLatitude(double latitude);
     double longitude() const;
     void setLongitude(double longitude);
+    QString facebook() const;
+    void setFacebook(const QString &facebook);
+    QString youtube() const;
+    void setYoutube(const QString &youtube);
     Contact &operator=(const Contact &other);
 
     bool create() override { return TAbstractModel::create(); }
@@ -39,7 +43,7 @@ public:
     bool save()   override { return TAbstractModel::save(); }
     bool remove() override { return TAbstractModel::remove(); }
 
-    static Contact create(const QString &phone, const QString &email, const QString &location, double latitude, double longitude);
+    static Contact create(const QString &phone, const QString &email, const QString &location, double latitude, double longitude, const QString &facebook, const QString &youtube);
     static Contact create(const QVariantMap &values);
     static Contact get(int id);
     static int count();

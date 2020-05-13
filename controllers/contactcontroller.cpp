@@ -1,12 +1,12 @@
 #include "contactcontroller.h"
 #include "contact.h"
 
+
 void ContactController::index()
 {
     /*
     auto contactList = Contact::getAll();
     texport(contactList);
-    render();
     */
     render();
 }

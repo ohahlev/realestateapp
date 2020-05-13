@@ -11,11 +11,13 @@ CREATE TABLE contact (
     email VARCHAR(32) NOT NULL,
     location VARCHAR(512) NOT NULL,
     latitude DECIMAL(10, 8) NOT NULL,
-    longitude DECIMAL(11, 8) NOT NULL
+    longitude DECIMAL(11, 8) NOT NULL,
+	facebook VARCHAR(64),
+	youtube VARCHAR(64)
 ) DEFAULT CHARSET=utf8;
 
-INSERT INTO contact(phone, email, location, latitude, longitude) VALUES
-    ('+1 234 567 8901', '1@example.com', '786 Main Road, hollies, California, USA', 11.5564, 104.9282);
+INSERT INTO contact(phone, email, location, latitude, longitude, facebook, youtube) VALUES
+    ('+1 234 567 8901', '1@example.com', '786 Main Road, hollies, California, USA', 11.5564, 104.9282, 'https://www.facebook.com/ohahlev', 'https://www.youtube.com/channel/UCW5ecqlRPhjLMramP3HnZjQ');
 
 
 CREATE TABLE banner (

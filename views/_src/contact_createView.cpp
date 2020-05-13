@@ -13,7 +13,7 @@ public:
 
 QString contact_createView::toString()
 {
-  responsebody.reserve(1849);
+  responsebody.reserve(2246);
   responsebody += QStringLiteral("<!DOCTYPE html>\n");
     tfetch(QVariantMap, contact);
   responsebody += QStringLiteral("<html>\n<head>\n  <meta charset=\"UTF-8\">\n  <title>");
@@ -34,6 +34,10 @@ QString contact_createView::toString()
   responsebody += THttpUtility::htmlEscape(contact["latitude"]);
   responsebody += QStringLiteral("\" /></label>\n  </p>\n  <p>\n    <label>Longitude<br /><input name=\"contact[longitude]\" value=\"");
   responsebody += THttpUtility::htmlEscape(contact["longitude"]);
+  responsebody += QStringLiteral("\" /></label>\n  </p>\n  <p>\n    <label>Facebook<br /><input name=\"contact[facebook]\" value=\"");
+  responsebody += THttpUtility::htmlEscape(contact["facebook"]);
+  responsebody += QStringLiteral("\" /></label>\n  </p>\n  <p>\n    <label>Youtube<br /><input name=\"contact[youtube]\" value=\"");
+  responsebody += THttpUtility::htmlEscape(contact["youtube"]);
   responsebody += QStringLiteral("\" /></label>\n  </p>\n  <p>\n    <input type=\"submit\" value=\"Create\" />\n  </p>\n</form>\n\n");
   responsebody += QVariant(linkTo("Back", urla("index"))).toString();
   responsebody += QStringLiteral("\n\n</body>\n</html>\n");

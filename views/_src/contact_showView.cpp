@@ -13,7 +13,7 @@ public:
 
 QString contact_showView::toString()
 {
-  responsebody.reserve(1595);
+  responsebody.reserve(1865);
   responsebody += QStringLiteral("<!DOCTYPE html>\n");
     tfetch(Contact, contact);
   responsebody += QStringLiteral("<html>\n<head>\n  <meta charset=\"UTF-8\">\n  <title>");
@@ -34,6 +34,10 @@ QString contact_showView::toString()
   responsebody += THttpUtility::htmlEscape(contact.latitude());
   responsebody += QStringLiteral("</dd><br />\n<dt>Longitude</dt><dd>");
   responsebody += THttpUtility::htmlEscape(contact.longitude());
+  responsebody += QStringLiteral("</dd><br />\n<dt>Facebook</dt><dd>");
+  responsebody += THttpUtility::htmlEscape(contact.facebook());
+  responsebody += QStringLiteral("</dd><br />\n<dt>Youtube</dt><dd>");
+  responsebody += THttpUtility::htmlEscape(contact.youtube());
   responsebody += QStringLiteral("</dd><br />\n\n");
   responsebody += QVariant(linkTo("Edit", urla("save", contact.id()))).toString();
   responsebody += QStringLiteral(" |\n");

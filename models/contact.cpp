@@ -82,13 +82,33 @@ void Contact::setLongitude(double longitude)
     d->longitude = longitude;
 }
 
+QString Contact::facebook() const
+{
+    return d->facebook;
+}
+
+void Contact::setFacebook(const QString &facebook)
+{
+    d->facebook = facebook;
+}
+
+QString Contact::youtube() const
+{
+    return d->youtube;
+}
+
+void Contact::setYoutube(const QString &youtube)
+{
+    d->youtube = youtube;
+}
+
 Contact &Contact::operator=(const Contact &other)
 {
     d = other.d;  // increments the reference count of the data
     return *this;
 }
 
-Contact Contact::create(const QString &phone, const QString &email, const QString &location, double latitude, double longitude)
+Contact Contact::create(const QString &phone, const QString &email, const QString &location, double latitude, double longitude, const QString &facebook, const QString &youtube)
 {
     ContactObject obj;
     obj.phone = phone;
@@ -96,6 +116,8 @@ Contact Contact::create(const QString &phone, const QString &email, const QStrin
     obj.location = location;
     obj.latitude = latitude;
     obj.longitude = longitude;
+    obj.facebook = facebook;
+    obj.youtube = youtube;
     if (!obj.create()) {
         return Contact();
     }

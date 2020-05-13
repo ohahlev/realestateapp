@@ -14,6 +14,8 @@ public:
     QString location;
     double latitude {0};
     double longitude {0};
+    QString facebook;
+    QString youtube;
 
     enum PropertyIndex {
         Id = 0,
@@ -22,6 +24,8 @@ public:
         Location,
         Latitude,
         Longitude,
+        Facebook,
+        Youtube,
     };
 
     int primaryKeyIndex() const override { return Id; }
@@ -42,6 +46,10 @@ private:    /*** Don't modify below this line ***/
     T_DEFINE_PROPERTY(double, latitude)
     Q_PROPERTY(double longitude READ getlongitude WRITE setlongitude)
     T_DEFINE_PROPERTY(double, longitude)
+    Q_PROPERTY(QString facebook READ getfacebook WRITE setfacebook)
+    T_DEFINE_PROPERTY(QString, facebook)
+    Q_PROPERTY(QString youtube READ getyoutube WRITE setyoutube)
+    T_DEFINE_PROPERTY(QString, youtube)
 };
 
 #endif // CONTACTOBJECT_H
